@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Component Example</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <section class="movie__header" id="movie-header">
+        <section class="left__header">
+            <h1><span id="movies">26</span> Movies</h1>
+        </section>
+        <section class="right__header">
+            <button class="movie__button" id="add-movie-button">
+                + Add New Movie
+            </button>
+        </section>
+    </section>
+
+    <section class="modal__body">
+        <user-card name="Great Movie" avatar="https://randomuser.me/api/portraits/women/2.jpg">
+            <div slot="director">Stella</div>
+            <div slot="comment">Nice</div>
+        </user-card>
+        <user-card name="Bad Movie" avatar="https://randomuser.me/api/portraits/men/2.jpg">
+            <div slot="director">Cam</div>
+            <div slot="comment">Nice</div>
+        </user-card>
+        <user-card name="Trash Movie" avatar="https://randomuser.me/api/portraits/women/6.jpg">
+            <div slot="director">Esther</div>
+            <div slot="comment">Nice</div>
+        </user-card>
+    </section>
+
+    <template>
+        <style>
+            .user-card {
+                  justify-content: center;
+                  align-items: center;
+                  font-family: 'Ubuntu', sans-serif;
+                  background: white;
+                  width: 600px;
+                  display: grid;
+                  grid-template-columns: 1fr 2fr;
+                  grid-gap: 10px;
+                  margin-bottom: 15px;
+                  border-radius: 15px;
+                  border: .3rem #a8a39d solid;
+              }
+          
+              .user-card img {
+                  height: 100%;
+              }
+          
+              .user-card button {
+                  cursor: pointer;
+                  background: #a8a39d;
+                  color: #fff;
+                  border: 0;
+                  border-radius: 5px;
+                  padding: 5px 10px;
+                  margin-bottom: 15px;
+              }
+          </style>
+        <div class="user-card">
+            <img />
+            <div>
+            <h3></h3>
+                <div class="info">
+                    <p> <slot name="director" /></p>
+                    <p> <slot name="comment" /> </p>
+                </div>
+                <button id="toggle-info">
+                   EDIT
+                </button>
+                <button id="toggle-info">
+                    DELETE
+                </button>
+            </div>
+        </div>
+    </template>
+    <script src="main.js"></script>
+    <script src="userCard.js"></script>
+    <script src="popupWindow.js"></script>
+</body>
+</html>
