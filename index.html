@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    <my-modal></my-modal>
     <main>
             <user-card name="Great Movie" avatar="https://randomuser.me/api/portraits/women/2.jpg">
                 <p slot="director">Stella</p>
@@ -25,7 +26,7 @@
         
     </main>
 
-    <template>
+    <template id="movieCard">
         <style>
              *{
                   justify-content: center;
@@ -69,25 +70,14 @@
                     <p> <slot name="director" /></p>
                     <p> <slot name="comment" /> </p>
                 </div>
-                <my-modal>
-                    <button id="close">
-                        <div>
-                            Hello!
-                        </div>
-                    </button>
-                </my-modal>
-                <button id="open">edit</button>
-                <button id="toggle-info">
-                    EDIT
-                </button>
-                <button id="toggle-info">
-                    DELETE
-                </button>
+                <button id="open">EDIT</button>
+                <button id="toggle-info">HIDE</button>
+                <button id="toggle-info">DELETE</button>
             </div>
         </div>
     </template>
     <script src="main.js"></script>
-    <script src="userCard.js"></script>
-    <script src="popupWindow.js"></script>
+    <script src="./components/popupWindow.js"></script>
+    <script src="./components/userCard.js"></script>
 </body>
 </html>

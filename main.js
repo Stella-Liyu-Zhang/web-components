@@ -1,12 +1,15 @@
-const modal = document.querySelector("my-modal");
-const open = document.querySelector("#open");
-const close = document.querySelector("#close");
+const movieOpen = document.querySelector("template").content.querySelector('#open');
 
 
-open.addEventListener("click", () =>{
+movieOpen.addEventListener("click", () =>{
+    console.log("haha");
     modal.open();
 })
 
-close.addEventListener("click", () =>{
-    modal.close();
+window.addEventListener('open-popup', (e) => {
+    document.querySelector('my-modal').open(e.detail);
+});
+
+window.addEventListener('close-popup', (e) =>{
+    document.querySelector('my-modal').close(e.detail);
 })

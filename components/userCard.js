@@ -12,7 +12,14 @@ class UserCard extends HTMLElement {
 
         this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
         this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
-
+        this.shadowRoot.querySelector('#open').addEventListener('click', () => {
+            let openEvent = new CustomEvent('open-popup', {
+                detail: {
+                   id: 1 
+                }
+            });
+            window.dispatchEvent(openEvent);
+        });
     }
     toggleInfo(){
         this.showInfo = !this.showInfo;
