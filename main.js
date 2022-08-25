@@ -1,31 +1,12 @@
-
-const ELEMS = {};
-const movies = [];
-const movieElems = [];
-
-function queryElements(){
-    ELEMS.addMovieBtn= document.getElementById("add-movie-button");
-
-}
+const modal = document.querySelector("my-modal");
+const open = document.querySelector("#open");
+const close = document.querySelector("#close");
 
 
-function addMovie(){
-    ELEMS.addMovieBtn.addEventListener("click", () => {
-        ELEMS.modal.classList.remove('hidden');
-        ELEMS.movieheader.classList.add('hidden');
-        ELEMS.movieList.classList.add('hidden');
-    })
-}
+open.addEventListener("click", () =>{
+    modal.open();
+})
 
-function init() {
-    //Read from local storage
-    ////readfromStorage();
-    // queryElements();
-    // createMovieElems();
-    //attachEvents();
-    addMovie();
-    // cancelMovie();
-    // addintoList();
-}
-
-document.addEventListener('DOMContentLoaded', init)
+close.addEventListener("click", () =>{
+    modal.close();
+})

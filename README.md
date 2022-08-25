@@ -4,6 +4,12 @@ Major goal: Deliver high quality user interfaces with custom, resuable and encap
 In this repo, I will be tickling web components so that I could have a clearer understanding while building large-scaled web applications. 
 > Let's shrink the frontend code base together!
 
+
+## Questions to discuss:
+- State Management 
+- render() function
+- 
+
 ## Custom Elements API
 these elements must always contain at least one hyphen somewhere in them and must have a closing tag.
 - Create Custom HTML tags
@@ -30,5 +36,7 @@ these elements must always contain at least one hyphen somewhere in them and mus
 - Use slots to add custom text
 
 ## ES Modules
+
+
 
 

@@ -1,8 +1,11 @@
 *{
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
     box-sizing:  border-box;
 }
+
 body{
     font-family: 'Ubuntu', sans-serif;
     background-color: #fdfbf8;
@@ -11,9 +14,13 @@ body{
     align-items: center;
     min-height: 100vh;
     width: 600px;
-
 }
 
+.user-card{
+    justify-content: center;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+}
 
 h1{
     font-size: 23px;
