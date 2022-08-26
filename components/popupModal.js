@@ -1,4 +1,4 @@
-class MyModal extends HTMLElement{
+class PopupModal extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
@@ -12,14 +12,19 @@ class MyModal extends HTMLElement{
             window.dispatchEvent(closeEvent);
         });
 
-        this.shadowRoot.querySelector('#delete-btn').addEventListener('click', () =>{
-            let deleteEvent = new CustomEvent('delete-movie', {
+        //add to list function 
+        this.shadowRoot.querySelector('#add-btn').addEventListener('click', () => {
+            //add an id on each movie
+            let id = Math.floor(Math.random() * 100);
+            //let sequentialid = localStorage.length+1;
+            ELEMS.movieList.dataid = id;
+            let addEvent = new CustomEvent('add-event', {
                 detail: {
                    id: 1 
                 }
             });
-            window.dispatchEvent(deleteEvent);
-        })
+            window.dispatchEvent(addEvent);
+        });
     }
     //to render the template
     render(){
@@ -150,8 +155,8 @@ class MyModal extends HTMLElement{
         this.shadowRoot.querySelector(".modal").style.display = "none";
     }
 
-    
+
 }
 
 
-customElements.define("my-modal", MyModal)
+customElements.define("popup-modal", PopupModal)

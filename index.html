@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Component Example</title>
+    <title>Componented CRUD Movie App</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-    <my-modal></my-modal>
     <main>
-            <user-card name="Great Movie" avatar="https://randomuser.me/api/portraits/women/2.jpg">
-                <p slot="director">Stella</p>
-                <p slot="comment">Nice</p>
-            </user-card>
-            <user-card name="Bad Movie" avatar="https://randomuser.me/api/portraits/men/2.jpg">
-                <p slot="director">Cam</p>
-                <p slot="comment">Nice</p>
-            </user-card>
-            <user-card name="Trash Movie" avatar="https://randomuser.me/api/portraits/women/6.jpg">
-                <p slot="director">Esther</p>
-                <p slot="comment">Nice</p>
-            </user-card>
-        
+            <section class="movie__header" id="movie-header">
+                <section class="left__header">
+                    <h1><span id="movies">26</span> Movies</h1>
+                </section>
+                <section class="right__header">
+                    <button class="movie__button" id="add-movie-button">
+                        + Add New Movie
+                    </button>
+                </section>
+            </section>
+
+            <div class="movie__list" id="movie-list">
+                <movie-card name="Great Movie" avatar="https://randomuser.me/api/portraits/women/2.jpg">
+                    <p slot="director">Stella</p>
+                    <p slot="comment">Nice</p>
+                </movie-card>
+                <movie-card name="Bad Movie" avatar="https://randomuser.me/api/portraits/men/2.jpg">
+                    <p slot="director">Cam</p>
+                    <p slot="comment">Nice</p>
+                </movie-card>
+                <movie-card name="Trash Movie" avatar="https://randomuser.me/api/portraits/women/6.jpg">
+                    <p slot="director">Esther</p>
+                    <p slot="comment">Nice</p>
+                </movie-card>
+            </div>
+
+            <popup-modal></popup-modal>
     </main>
 
     <template id="movieCard">
@@ -33,7 +46,7 @@
                   align-items: center;
                   box-sizing:  border-box;
              }
-             .user-card {
+             .movie-card {
                   justify-content: center;
                   align-items: center;
                   font-family: 'Ubuntu', sans-serif;
@@ -47,12 +60,12 @@
                   border: .3rem #a8a39d solid;
               }
           
-              .user-card img {
+              .movie-card img {
                 
                   height: 100%;
               }
           
-              .user-card button {
+              .movie-card button {
                   cursor: pointer;
                   background: #a8a39d;
                   color: #fff;
@@ -62,7 +75,7 @@
                   margin-bottom: 15px;
               }
           </style>
-        <div class="user-card">
+        <div class="movie-card">
             <img />
             <div>
             <h3></h3>
@@ -70,14 +83,14 @@
                     <p> <slot name="director" /></p>
                     <p> <slot name="comment" /> </p>
                 </div>
-                <button id="open">EDIT</button>
+                <button id="edit-btn">EDIT</button>
                 <button id="toggle-info">HIDE</button>
-                <button id="toggle-info">DELETE</button>
+                <button id="delete-btn">DELETE</button>
             </div>
         </div>
     </template>
     <script src="main.js"></script>
-    <script src="./components/popupWindow.js"></script>
-    <script src="./components/userCard.js"></script>
+    <script src="./components/popupModal.js"></script>
+    <script src="./components/movieCard.js"></script>
 </body>
 </html>
