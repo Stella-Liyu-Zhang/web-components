@@ -11,13 +11,9 @@ class PopupModal extends HTMLElement{
             });
             window.dispatchEvent(closeEvent);
         });
-
+ 
         //add to list function 
-        this.shadowRoot.querySelector('#add-btn').addEventListener('click', () => {
-            //add an id on each movie
-            let id = Math.floor(Math.random() * 100);
-            //let sequentialid = localStorage.length+1;
-            ELEMS.movieList.dataid = id;
+        this.shadowRoot.querySelector('#add-button').addEventListener('click', () => {
             let addEvent = new CustomEvent('add-event', {
                 detail: {
                    id: 1 
@@ -25,6 +21,8 @@ class PopupModal extends HTMLElement{
             });
             window.dispatchEvent(addEvent);
         });
+
+      
     }
     //to render the template
     render(){
@@ -118,6 +116,10 @@ class PopupModal extends HTMLElement{
                     <form id="add-movie-form" class="movieform" action="">
                         <ul>
                             <li class="form__group">
+                                <label for="movie_picture">Movie picture URL</label>
+                                <input type="text" name="movie_picture" id="movie_picture" class="form__input">
+                            </li>
+                            <li class="form__group">
                                 <label for="movie_name">Movie Name</label>
                                 <input type="text" name="movie_name" id="movie_name" class="form__input">
                             </li>
@@ -155,6 +157,41 @@ class PopupModal extends HTMLElement{
         this.shadowRoot.querySelector(".modal").style.display = "none";
     }
 
+    add(data){
+        let moviePicInput = this.shadowRoot.querySelector("#movie_picture");
+        let movieTitleInput = this.shadowRoot.querySelector("#movie_name");
+        let movieCommentInput = this.shadowRoot.querySelector("#text");
+        let directorInput = this.shadowRoot.querySelector("#director");
+        let movieList = document.getElementById("movie-list");
+    
+        movieList.movie_picture = moviePicInput.value;
+        movieList.movie_name = movieTitleInput.value;
+        movieList.director_name = directorInput.value;
+        movieList.text = movieCommentInput.value;
+    
+        //add an id on each movie
+        let id = Math.floor(Math.random() * 100);
+
+        movieList.dataid = id;
+
+        movieTitleInput.value = "";
+        directorInput.value = "";
+        movieCommentInput.value = "";
+        moviePicInput.value = "";
+
+        localStorage.setItem(movieList.dataid, JSON.stringify(movieList));
+
+        window.location.reload();
+    }
+    delete(data){
+        deleteConfirmation();
+        localStorage.removeItem(id);
+        window.location.reload();
+    }
+    
+    deleteConfirmation(){
+        return confirm('Are you sure you want to Delete?');
+    }
 
 }
 

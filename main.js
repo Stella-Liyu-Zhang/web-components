@@ -13,6 +13,10 @@ window.addEventListener('close-popup', (e) =>{
 });
 
 
+window.addEventListener('deleteEvent',(e) =>{
+    document.querySelector('movie-card').delete(e.detail);
+})
+
 function queryElements(){
     ELEMS.movieheader = document.getElementById("movie-header");
     ELEMS.totalmovies = document.getElementById("movies");
@@ -22,13 +26,13 @@ function queryElements(){
     // ELEMS.movieCommentInput = document.getElementById("text");
     // ELEMS.directorInput = document.getElementById("director");
             
-    // ELEMS.addBtn = document.getElementById("add-button");
+    ELEMS.addBtn = document.getElementById("add-button");
     // ELEMS.cancelBtn = document.getElementById("cancel-button");
     // ELEMS.modal = document.getElementById("add-movie-modal");
     ELEMS.movieList = document.getElementById("movie-list");
     ELEMS.totalmovies.innerHTML = localStorage.length;
 
-    //ELEMS.template = document.querySelector('template');
+    ELEMS.template = document.querySelector('template');
 
     ELEMS.popup = document.querySelector('popup-modal');
     // we report error if we have trouble finding the element.
@@ -47,34 +51,38 @@ function readfromStorage(){
     console.log(movies);
 }
 
+
 function addMovie(){
     ELEMS.addMovieBtn.addEventListener("click", (e) => {
         ELEMS.popup.open(e.detail);
     })
 }
 
+//add the input into the list
 function addintoList(){
-    ELEMS.addBtn.addEventListener("click", () =>{
-        ELEMS.movieList.movie_name = ELEMS.movieTitleInput.value;
-        ELEMS.movieList.director_name = ELEMS.directorInput.value;
-        ELEMS.movieList.text = ELEMS.movieCommentInput.value;
+    ELEMS.addBtn.addEventListener("click", (e) =>{
+        ELEMS.popup.add(e.detail);
 
-        //add an id on each movie
-        let id = Math.floor(Math.random() * 100);
-        //let sequentialid = localStorage.length+1;
-        ELEMS.movieList.dataid = id;
+        // ELEMS.movieList.movie_name = ELEMS.movieTitleInput.value;
+        // ELEMS.movieList.director_name = ELEMS.directorInput.value;
+        // ELEMS.movieList.text = ELEMS.movieCommentInput.value;
 
-        ELEMS.movieTitleInput.value = "";
-        ELEMS.directorInput.value = "";
-        ELEMS.movieCommentInput.value = "";
+        // //add an id on each movie
+        // let id = Math.floor(Math.random() * 100);
+        // //let sequentialid = localStorage.length+1;
+        // ELEMS.movieList.dataid = id;
 
-        ELEMS.modal.classList.add('hidden');
-        ELEMS.movieheader.classList.remove('hidden');
-        ELEMS.movieList.classList.remove('hidden');
+        // ELEMS.movieTitleInput.value = "";
+        // ELEMS.directorInput.value = "";
+        // ELEMS.movieCommentInput.value = "";
 
-        localStorage.setItem(ELEMS.movieList.dataid, JSON.stringify(ELEMS.movieList));
+        // ELEMS.modal.classList.add('hidden');
+        // ELEMS.movieheader.classList.remove('hidden');
+        // ELEMS.movieList.classList.remove('hidden');
 
-        window.location.reload();
+        // localStorage.setItem(ELEMS.movieList.dataid, JSON.stringify(ELEMS.movieList));
+
+        // window.location.reload();
     })
 }
 
@@ -161,7 +169,7 @@ function init() {
     //attachEvents();
     addMovie();
     //cancelMovie();
-   // addintoList();
+    addintoList();
 }
 
 document.addEventListener('DOMContentLoaded', init)

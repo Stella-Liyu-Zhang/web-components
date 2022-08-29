@@ -22,6 +22,7 @@ class movieCard extends HTMLElement {
             window.dispatchEvent(openEvent);
         });
 
+        //delete the movie
         this.shadowRoot.querySelector('#delete-btn').addEventListener('click', () => {
             let deleteEvent = new CustomEvent('delete-elem', {
                 detail: {
@@ -35,7 +36,7 @@ class movieCard extends HTMLElement {
         this.showInfo = !this.showInfo;
         const info = this.shadowRoot.querySelector('.info');
         const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
-        
+
         if(this.showInfo){
             info.style.display = "block";
             toggleBtn.innerText = 'Hide Info';
