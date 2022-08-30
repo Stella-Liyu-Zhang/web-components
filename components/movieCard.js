@@ -1,4 +1,4 @@
-const template = document.querySelector('template');
+const movieCardTemplate = document.getElementById('movieCard');
 
 class movieCard extends HTMLElement {
     constructor() {
@@ -6,17 +6,16 @@ class movieCard extends HTMLElement {
 
         this.showInfo = true;
         //create a shadow dom
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: 'open' });
         //returns the copy of node; If the deep is true, the copy also includes the node's descendants
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-
+        this.shadowRoot.appendChild(movieCardTemplate.content.cloneNode(true));
         this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
         this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
 
         this.shadowRoot.querySelector('#edit-btn').addEventListener('click', () => {
             let openEvent = new CustomEvent('open-popup', {
                 detail: {
-                   id: 1 
+                    id: 1
                 }
             });
             window.dispatchEvent(openEvent);
@@ -26,21 +25,22 @@ class movieCard extends HTMLElement {
         this.shadowRoot.querySelector('#delete-btn').addEventListener('click', () => {
             let deleteEvent = new CustomEvent('delete-elem', {
                 detail: {
-                   id: 1 
+                    id: 1
                 }
             });
             window.dispatchEvent(deleteEvent);
         })
     }
-    toggleInfo(){
+
+    toggleInfo() {
         this.showInfo = !this.showInfo;
         const info = this.shadowRoot.querySelector('.info');
         const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
 
-        if(this.showInfo){
+        if (this.showInfo) {
             info.style.display = "block";
             toggleBtn.innerText = 'Hide Info';
-        }else{
+        } else {
             info.style.display = "none";
             toggleBtn.innerText = 'Show Info';
         }

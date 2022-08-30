@@ -38,5 +38,9 @@ these elements must always contain at least one hyphen somewhere in them and mus
 ## ES Modules
 
 
+## Some JS Notes
+JSON.parse() is used to convert a string containing JSON notation into a Javascript object.
+
+Your code turns the object into a string (by calling .toString()) in order to try to parse it as JSON text.
 
 

@@ -1,12 +1,12 @@
-*{
+* {
     justify-content: center;
     align-items: center;
     margin: 0;
     padding: 0;
-    box-sizing:  border-box;
+    box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Ubuntu', sans-serif;
     background-color: #fdfbf8;
     line-height: 1.5;
@@ -16,23 +16,25 @@ body{
     width: 600px;
 }
 
-.movie-card{
+.movie-card {
     justify-content: center;
     align-items: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
-h1{
+h1 {
     font-size: 23px;
     line-height: 26px;
     color: white;
     font-weight: 1000;
     letter-spacing: -0.25px;
 }
+
 h3 {
     color: purple;
 }
-.movie__header{
+
+.movie__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +43,7 @@ h3 {
     padding: 20px;
 }
 
-.movie__button{
+.movie__button {
     outline: none;
     display: inline;
     padding: 12px 24px;
@@ -50,17 +52,18 @@ h3 {
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
-    color: rgb(242.244,254);
+    color: rgb(242.244, 254);
     cursor: pointer;
     border: medium none;
     background: #e2ddd9 none repeat scroll 0% 0%;
 }
-.movie__button:hover{
+
+.movie__button:hover {
     background: #c6c1ba none repeat scroll 0% 0%;
     transform: translateX(0rem) translateY(-0.125rem);
 }
 
-.modal__body{
+.modal__body {
     animation: slide-up 0.3s ease-in-out 0% 0%;
     display: flex;
     flex-direction: column;
