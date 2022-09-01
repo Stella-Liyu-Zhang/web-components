@@ -11,7 +11,12 @@ window.addEventListener('close-popup', (e) => {
     document.querySelector('popup-modal').close(e.detail);
 });
 
+//from the pop up window. add a movie into the list.
+window.addEventListener('add-event', (e) => {
+    document.querySelector('popup-modal').addElement(e.detail);
+});
 
+//delete a movie element
 window.addEventListener('deleteEvent', (e) => {
     document.querySelector('movie-card').delete(e.detail);
 })
@@ -31,7 +36,7 @@ function queryElements() {
     ELEMS.modal = document.getElementById("popupModal").content.getElementById("add-movie-modal");
     ELEMS.movieList = document.getElementById("movie-list");
 
-    ELEMS.movieCardTemplate = document.querySelector('#movieCard > .movie-card');
+    //ELEMS.movieCardTemplate = document.;
     ELEMS.popup = document.querySelector('popup-modal');
     ELEMS.totalmovies.innerHTML = localStorage.length;
 
@@ -60,7 +65,7 @@ function addMovie(){
 //add the input into the list
 function addintoList() {
     ELEMS.addBtn.addEventListener("click", (e) => {
-        ELEMS.popup.add(e.detail);
+        //ELEMS.popup.add(e.detail);
 
         ELEMS.movieList.movie_name = ELEMS.movieTitleInput.value;
         ELEMS.movieList.director_name = ELEMS.directorInput.value;
@@ -89,40 +94,40 @@ function addintoList() {
 
 
 
-function createMovieElems() {
-    movies.forEach(movie => {
-        let newMovieElem = document.createElement('div');
-        newMovieElem.classList.add('movie__item');
-        newMovieElem.classList.add('item-animation');
+// function createMovieElems() {
+//     movies.forEach(movie => {
+//         let newMovieElem = document.createElement('div');
+//         newMovieElem.classList.add('movie__item');
+//         newMovieElem.classList.add('item-animation');
 
-        const node = ELEMS.movieCardTemplate.content;
-        const clone = node.cloneNode(true);
-        newMovieElem.appendChild(clone);
+//         const node = ELEMS.movieCardTemplate.content;
+//         const clone = node.cloneNode(true);
+//         newMovieElem.appendChild(clone);
 
-        newMovieElem.querySelector('h3.movie_name').innerHTML = movie['movie_name'];
-        newMovieElem.querySelector('p.director_name').innerHTML = movie['director_name'];
-        newMovieElem.querySelector('p.comments').innerHTML = movie['comments'];
-        newMovieElem.querySelector('img').innerHTML = movie['movie_picture'];
+//         newMovieElem.querySelector('h3.movie_name').innerHTML = movie['movie_name'];
+//         newMovieElem.querySelector('p.director_name').innerHTML = movie['director_name'];
+//         newMovieElem.querySelector('p.comments').innerHTML = movie['comments'];
+//         newMovieElem.querySelector('img').innerHTML = movie['movie_picture'];
 
-        newMovieElem.setAttribute('dataid', movie['dataid']);
+//         newMovieElem.setAttribute('dataid', movie['dataid']);
 
-        ELEMS.movieList.append(newMovieElem);
-    });
-}
+//         ELEMS.movieList.append(newMovieElem);
+//     });
+// }
 
-function attachEvents() {
-    Array.from(ELEMS.movieList.children).forEach(movie => {
-        let editBtn = movie.querySelector('button.edit');
-        let deleteBtn = movie.querySelector('button.delete');
+// function attachEvents() {
+//     Array.from(ELEMS.movieList.children).forEach(movie => {
+//         let editBtn = movie.querySelector('button.edit');
+//         let deleteBtn = movie.querySelector('button.delete');
 
-        editBtn.addEventListener('click', () => {
-            editMovie(movie.getAttribute('dataid'));
-        });
-        deleteBtn.addEventListener('click', () => {
-            deleteMovie(movie.getAttribute('dataid'));
-        });
-    });
-}
+//         editBtn.addEventListener('click', () => {
+//             editMovie(movie.getAttribute('dataid'));
+//         });
+//         deleteBtn.addEventListener('click', () => {
+//             deleteMovie(movie.getAttribute('dataid'));
+//         });
+//     });
+// }
 
 //localstorage.remove(99);
 function deleteMovie(id) {
@@ -169,8 +174,8 @@ function deleteConfirmation() {
 function init() {
     readfromStorage();
     queryElements();
-    createMovieElems();
-    attachEvents();
+    //createMovieElems();
+   // attachEvents();
     addMovie();
     addintoList();
 }

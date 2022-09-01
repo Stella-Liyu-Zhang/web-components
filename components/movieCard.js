@@ -20,17 +20,8 @@ class movieCard extends HTMLElement {
             });
             window.dispatchEvent(openEvent);
         });
-
-        //delete the movie
-        this.shadowRoot.querySelector('#delete-btn').addEventListener('click', () => {
-            let deleteEvent = new CustomEvent('delete-elem', {
-                detail: {
-                    id: 1
-                }
-            });
-            window.dispatchEvent(deleteEvent);
-        })
     }
+    movies = [];
 
     toggleInfo() {
         this.showInfo = !this.showInfo;
@@ -45,11 +36,33 @@ class movieCard extends HTMLElement {
             toggleBtn.innerText = 'Show Info';
         }
     }
+    readfromStorage() {
+        Object.keys(localStorage).forEach(key => {
+            movies.push(JSON.stringify(localStorage.getItem(key)));
+        });
+        console.log(movies);
+    }
+
+    deleteMovie(id){
+        deleteConfirmation();
+        localStorage.removeItem(id);
+        window.location.reload();
+    }
+    deleteConfirmation(){
+        return confirm('Are you sure you want to Delete?');
+    }
+    editMovie(id){
+
+    }
     connectedCallback() {
         this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
+        this.shadowRoot.querySelector('#edit-btn').addEventListener('click', () => this.editMovie());
+        this.shadowRoot.querySelector('#delete-btn').addEventListener('click', () => this.deleteMovie());
     }
     disconnectedCallback() {
         this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+        this.shadowRoot.querySelector('#edit-btn').removeEventListener();
+        this.shadowRoot.querySelector('#delete-btn').removeEventListener();
     }
 }
 
